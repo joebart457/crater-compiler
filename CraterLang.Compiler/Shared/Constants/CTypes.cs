@@ -10,7 +10,7 @@ namespace CraterLang.Compiler.Shared.Constants
     {
         public const string null_t = "NULL";
 
-        public const string string_t = "string";
+        public const string string_t = "char*";
         public const string char_t = "char";
 
         public const string uint8_t = "uint8_t";

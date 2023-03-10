@@ -11,40 +11,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef struct {
-	char* data;
-	int32_t length;
-} string;
-
-string construct_string(char* src) {
-	string self;
-
-	if (src == NULL) {
-		self.data = NULL;
-		self.length = 0;
-	}
-	else {
-		size_t size = sizeof(char) * (strlen(src) + 1);
-		self.data = (char*)malloc(size);
-		if (self.data == NULL) {
-			self.length = 0;
-		}
-		else {
-			strcpy(self.data, src);
-			self.length = strlen(src);
-		}
-	}
-	return self;
-}
-
 
 typedef struct {
 	bool had_error;
-	string error_message;
+	char* error_message;
 } error_result;
 
 
-RUNTIME_FN println(void* _unused, error_result* err, string message) {
-	printf(message.data);
+RUNTIME_FN println(void* _unused, error_result* err, char* message) {
+	printf(message);
 	return RUNTIME_SUCCESS;
 }

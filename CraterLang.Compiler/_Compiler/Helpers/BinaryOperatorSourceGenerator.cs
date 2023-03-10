@@ -42,7 +42,7 @@ namespace CraterLang.Compiler._Compiler.Helpers
 
         private static string GenerateOperator_Addition(CrateType lhs, CrateType rhs)
         {
-            if (lhs.CType == CTypes.string_t) return "string_concat({0}, {1})"; //TODO can this be translated to fn call before we get here?
+            if (lhs.CType == CTypes.string_t) return "strcat({0}, {1})"; //TODO can this be translated to fn call before we get here?
             return "{0} + {1}";
         }
 
@@ -73,7 +73,7 @@ namespace CraterLang.Compiler._Compiler.Helpers
 
         private static string GenerateOperator_Equal(CrateType lhs, CrateType rhs)
         {
-            if (lhs.CType == CTypes.string_t) return "string_equal({0}, {1})";
+            if (lhs.CType == CTypes.string_t) return "strcmp({0}, {1}) == 0";
             if (IsValueType(lhs)) return "{0} == {1}";
             var fieldComparisons = new List<string>();
             foreach (var field in lhs.Fields)
@@ -83,7 +83,7 @@ namespace CraterLang.Compiler._Compiler.Helpers
 
         private static string GenerateOperator_NotEqual(CrateType lhs, CrateType rhs)
         {
-            if (lhs.CType == CTypes.string_t) return "!string_equal({0}, {1})";
+            if (lhs.CType == CTypes.string_t) return "strcmp({0}, {1}) != 0";
             if (IsValueType(lhs)) return "{0} != {1}";
             var fieldComparisons = new List<string>();
             foreach (var field in lhs.Fields)

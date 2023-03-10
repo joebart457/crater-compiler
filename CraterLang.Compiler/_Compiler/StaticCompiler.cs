@@ -91,7 +91,7 @@ namespace CraterLang.Compiler._Compiler
         {
             if (typedValueTargetLiteral.CrateType.CType == CTypes.string_t)
             {
-                return $"construct_string(\"{typedValueTargetLiteral.Value}\")";
+                return $"\"{typedValueTargetLiteral.Value}\"";
             }
             if (typedValueTargetLiteral.Value == null) return "NULL";
             if (typedValueTargetLiteral.CrateType.CType == CTypes.bool_t) return $"{typedValueTargetLiteral.Value}".ToLowerInvariant();

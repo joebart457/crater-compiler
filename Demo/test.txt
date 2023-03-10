@@ -1,0 +1,21 @@
+type my_error error {
+	int32 extra;
+
+}
+
+
+
+fn printntimes(int32_t n): int32_t, my_error
+	stor condition, true
+	loop-while $condition:
+		operate - $n, 1
+		mov n, %%opr
+		operate >= %%opr, 0
+		mov condition, %%opr
+		safe-invoke println "test";
+		operate == %%err, %%err
+
+	end-loop
+	ret 1
+
+end-fn
